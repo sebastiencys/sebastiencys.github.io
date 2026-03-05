@@ -65,6 +65,9 @@
             </h2>
 
             <div class="flex justify-center gap-4">
+                <a href="#experience" class="bg-medical-100 hover:bg-medical-500 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg">
+                    Voir mes expériences cliniques
+                </a>
                 <a href="#portfolio" class="bg-medical-700 hover:bg-medical-900 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg">
                     Voir mes projets Tech
                 </a>
@@ -89,6 +92,8 @@
                         <span class="bg-medical-100 text-medical-700 px-3 py-1 rounded-full text-sm font-medium">R</span>
                         <span class="bg-medical-100 text-medical-700 px-3 py-1 rounded-full text-sm font-medium">SQL (MySQL, Postgres)</span>
                         <span class="bg-medical-100 text-medical-700 px-3 py-1 rounded-full text-sm font-medium">HTML</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
                         <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">Codage PMSI</span>
                     </div>
                 </div>
@@ -96,7 +101,7 @@
                     <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm text-center">
                         <i class="fa-solid fa-stethoscope text-3xl text-medical-500 mb-3"></i>
                         <h4 class="font-semibold text-gray-800">Clinique</h4>
-                        <p class="text-sm text-gray-500 mt-2">Gériatrie, SSR/SMR, Télésurveillance</p>
+                        <p class="text-sm text-gray-500 mt-2">Polyvalent, SSR/SMR</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm text-center">
                         <i class="fa-solid fa-database text-3xl text-medical-500 mb-3"></i>
@@ -104,40 +109,6 @@
                         <p class="text-sm text-gray-500 mt-2">Extraction, automatisation, IA Générative</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Tech -->
-    <section id="portfolio" class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl font-bold mb-8 text-center text-gray-900">Portfolio Numérique en Santé</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-                
-                <!-- Projet 1 -->
-                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition border-t-4 border-medical-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <h4 class="text-xl font-bold text-gray-800">openScanSanteSMR-data</h4>
-                        <span class="text-sm font-bold text-medical-500 bg-medical-50 px-2 py-1 rounded">2026</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Projet personnel open source. Extraction et mises à jour automatiques de données consolidées de ScanSanté.</p>
-                    <a href="https://github.com/sebastiencys/openScanSanteSMR-data" target="_blank" class="text-medical-700 font-medium hover:text-medical-900">
-                        <i class="fa-brands fa-github mr-1"></i> Voir le dépôt &rarr;
-                    </a>
-                </div>
-
-                <!-- Projet 2 -->
-                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition border-t-4 border-medical-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <h4 class="text-xl font-bold text-gray-800">Projet CAPIA-DOPIA</h4>
-                        <span class="text-sm font-bold text-medical-500 bg-medical-50 px-2 py-1 rounded">2025</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Réalisé lors d'un datathon (Univ. Bourgogne / ESEO). Ajout de nouvelles fonctionnalités et amélioration d'algorithme.</p>
-                    <a href="https://datathon.fr" target="_blank" class="text-medical-700 font-medium hover:text-medical-900">
-                        <i class="fa-solid fa-link mr-1"></i> datathon.fr &rarr;
-                    </a>
-                </div>
-
             </div>
         </div>
     </section>
@@ -152,7 +123,7 @@
                 <div class="mb-10 ml-8">
                     <span class="absolute flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-3 ring-8 ring-white"></span>
                     <h4 class="text-xl font-bold text-gray-800">Médecin remplaçant en SMR/SSR</h4>
-                    <span class="block mb-2 text-sm font-normal text-medical-700">2021 - Présent</span>
+                    <span class="block mb-2 text-sm font-normal text-medical-700">2021 - 2025</span>
                     <p class="text-gray-600 mb-4">Missions régulières avec adaptation rapide aux différents logiciels métier en santé, en clinique et dans le secteur public.</p>
                     <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
                         <li><strong>07/2024–09/2025 :</strong> SMR CH Sud Gironde, La Réole (33)</li>
@@ -173,36 +144,46 @@
         </div>
     </section>
 
+    <!-- Portfolio Tech -->
+    <section id="portfolio" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold mb-8 text-center text-gray-900">Portfolio Numérique en Santé</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Projet 1 -->
+                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition border-t-4 border-medical-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-xl font-bold text-gray-800">openScanSanteSMR-data</h4>
+                        <span class="text-sm font-bold text-medical-500 bg-medical-50 px-2 py-1 rounded">2026</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Projet personnel open source. Extraction et mises à jour automatiques de données consolidées de ScanSanté.</p>
+                    <a href="https://github.com/sebastiencys/openScanSanteSMR-data" target="_blank" class="text-medical-700 font-medium hover:text-medical-900">
+                        <i class="fa-brands fa-github mr-1"></i> github.com &rarr;
+                    </a>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition border-t-4 border-medical-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-xl font-bold text-gray-800">Projet CAPIA-DOPIA</h4>
+                        <span class="text-sm font-bold text-medical-500 bg-medical-50 px-2 py-1 rounded">2025</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Réalisé lors d'un datathon (Univ. Bourgogne / ESEO). Ajout de nouvelles fonctionnalités et amélioration d'algorithme.</p>
+                    <a href="https://datathon.fr" target="_blank" class="text-medical-700 font-medium hover:text-medical-900">
+                        <i class="fa-solid fa-link mr-1"></i> datathon.fr &rarr;
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Éducation et Formation -->
     <section id="education" class="py-16 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="text-3xl font-bold mb-8 text-center text-gray-900">Formation & Diplômes</h3>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Data / Santé Connectée -->
-                <div>
-                    <h4 class="text-xl font-semibold mb-6 flex items-center text-medical-900">
-                        <i class="fa-solid fa-laptop-medical mr-3"></i> Data, IA & E-Santé
-                    </h4>
-                    <div class="space-y-6">
-                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
-                            <span class="text-sm text-medical-700 font-bold">2025-2026</span>
-                            <h5 class="font-bold text-gray-800">DE Science des données en santé publique</h5>
-                            <p class="text-sm text-gray-600">EHESP, Rennes</p>
-                        </div>
-                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
-                            <span class="text-sm text-medical-700 font-bold">2024-2025</span>
-                            <h5 class="font-bold text-gray-800">DU Intelligence Artificielle en Santé (IAS) <br>& DU Méthodes de gestion de bases de données</h5>
-                            <p class="text-sm text-gray-600">Univ. Bourgogne / Univ. Bordeaux ISPED</p>
-                        </div>
-                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
-                            <span class="text-sm text-medical-700 font-bold">2025</span>
-                            <h5 class="font-bold text-gray-800">DIU IA Générative en Santé (GEN-IAs) <br>& DU Santé Connectée</h5>
-                            <p class="text-sm text-gray-600">Univ. Bourgogne / Univ. Paris Cité</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Médecine -->
                 <div>
                     <h4 class="text-xl font-semibold mb-6 flex items-center text-medical-900">
@@ -225,8 +206,47 @@
                             <h5 class="font-bold text-gray-800">Diplôme de fin de DCEM</h5>
                             <p class="text-sm text-gray-600">Université de Bordeaux</p>
                         </div>
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-gray-400">
+                            <h5 class="font-bold text-gray-800">PCEM1</h5>
+                            <p class="text-sm text-gray-600">Université de La Réunion</p>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- Data / Santé Connectée -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-6 flex items-center text-medical-900">
+                        <i class="fa-solid fa-laptop-medical mr-3"></i> Data, IA & E-Santé
+                    </h4>
+                    <div class="space-y-6">
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
+                            <span class="text-sm text-medical-700 font-bold">2025-2026</span>
+                            <h5 class="font-bold text-gray-800">DE Science des données en santé publique</h5>
+                            <p class="text-sm text-gray-600">EHESP, Rennes</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
+                            <span class="text-sm text-medical-700 font-bold">2025</span>
+                            <h5 class="font-bold text-gray-800">DU Santé Connectée</h5>
+                            <p class="text-sm text-gray-600">Univ. Paris Cité</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
+                            <span class="text-sm text-medical-700 font-bold">2024-2025</span>
+                            <h5 class="font-bold text-gray-800">DU Intelligence Artificielle en Santé (IAS)</h5>
+                            <p class="text-sm text-gray-600">Univ. Bourgogne</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
+                            <span class="text-sm text-medical-700 font-bold">2024-2025</span>
+                            <h5 class="font-bold text-gray-800">DU Méthodes de gestion de bases de données</h5>
+                            <p class="text-sm text-gray-600">Univ. Bordeaux ISPED</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-medical-500">
+                            <span class="text-sm text-medical-700 font-bold">2025</span>
+                            <h5 class="font-bold text-gray-800">DIU IA Générative en Santé (GEN-IAs)</h5>
+                            <p class="text-sm text-gray-600">Univ. Bourgogne</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -236,7 +256,7 @@
         <div class="max-w-4xl mx-auto px-4">
             <h3 class="text-xl font-bold mb-4">Sébastien Chen-Yen-Su</h3>
             <div class="flex justify-center space-x-6 mb-6">
-                <a href="mailto:sebastien.cys@outlook.com" class="text-gray-400 hover:text-white transition"><i class="fa-solid fa-envelope text-2xl"></i></a>
+                <a href="mailto:[restricted]" class="text-gray-400 hover:text-white transition"><i class="fa-solid fa-envelope text-2xl"></i></a>
                 <a href="https://github.com/sebastiencys" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-github text-2xl"></i></a>
             </div>
             <p class="text-gray-500 text-sm">&copy; 2026 Sébastien Chen-Yen-Su. Tous droits réservés.</p>
