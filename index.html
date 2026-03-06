@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sébastien Chen-Yen-Su - Médecin & Data/IA en Santé</title>
     
-    <!-- Favicon (Stéthoscope par défaut en SVG, à remplacer par votre image si besoin) -->
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
 
-    <!-- Tailwind CSS pour le design -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuration des couleurs Tailwind -->
     <script>
         tailwind.config = {
             theme: {
@@ -19,8 +18,12 @@
                         medical: {
                             50: '#f0f9ff',
                             100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
                             500: '#0ea5e9',
+                            600: '#0284c7',
                             700: '#0369a1',
+                            800: '#075985',
                             900: '#0c4a6e',
                         }
                     }
@@ -29,20 +32,14 @@
         }
     </script>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS CSS pour les animations au défilement -->
+    <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .gradient-text {
-            background: linear-gradient(to right, #0ea5e9, #0369a1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
@@ -62,26 +59,33 @@
         </div>
     </nav>
 
-    <!-- Header / Hero Section -->
-    <header id="me" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-medical-50 to-white min-h-[80vh] flex flex-col justify-center">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900">
-                Sébastien <span class="gradient-text">Chen-Yen-Su</span>
+    <!-- Header / Hero Section (NOUVEAU DESIGN SOMBRE) -->
+    <header id="me" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-medical-900 to-medical-800 min-h-[80vh] flex flex-col justify-center overflow-hidden">
+        
+        <!-- Effets de lueur en arrière-plan (Style IA/Tech) -->
+        <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-medical-500 rounded-full mix-blend-screen filter blur-[100px]"></div>
+            <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-400 rounded-full mix-blend-screen filter blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+                Sébastien <span class="bg-gradient-to-r from-cyan-400 to-medical-300 text-transparent bg-clip-text">Chen-Yen-Su</span>
             </h1>
-            <h2 class="text-xl md:text-2xl font-light text-gray-600 mb-10">
-                Médecin Généraliste <span class="mx-2 hidden sm:inline">|</span><br class="sm:hidden"> Data & IA en Santé
+            <h2 class="text-xl md:text-2xl font-light text-gray-300 mb-10">
+                Médecin Généraliste <span class="mx-2 hidden sm:inline text-medical-500/50">|</span><br class="sm:hidden"> Data & IA en Santé
             </h2>
 
-            <!-- Boutons corrigés pour le mobile -->
+            <!-- Boutons repensés pour le fond sombre -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-2xl mx-auto">
-                <a href="#experience" class="w-full sm:w-auto text-center bg-medical-700 hover:bg-medical-500 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg">
+                <a href="#experience" class="w-full sm:w-auto text-center bg-medical-500 hover:bg-medical-400 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg shadow-medical-500/30">
                     Expériences cliniques
                 </a>
-                <a href="#portfolio" class="w-full sm:w-auto text-center bg-medical-700 hover:bg-medical-900 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg">
+                <a href="#portfolio" class="w-full sm:w-auto text-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg">
                     Projets Tech
                 </a>
-                <a href="https://github.com/sebastiencys" target="_blank" class="w-full sm:w-auto text-center justify-center bg-gray-800 hover:bg-black text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg flex items-center">
-                    <i class="fa-brands fa-github mr-2"></i> GitHub
+                <a href="https://github.com/sebastiencys" target="_blank" class="w-full sm:w-auto text-center justify-center bg-white hover:bg-gray-100 text-gray-900 font-semibold py-3 px-6 rounded-lg transition shadow-lg flex items-center">
+                    <i class="fa-brands fa-github mr-2 text-xl"></i> GitHub
                 </a>
             </div>
         </div>
@@ -131,35 +135,48 @@
                 <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Missions régulières en tant que médecin remplaçant avec une adaptation rapide aux différents logiciels métier en santé, en clinique et dans le secteur public.</p>
             </div>
             
-            <!-- Frise chronologique (Séparée par remplacements) -->
             <div class="relative border-l-2 border-medical-200 ml-3 md:ml-0">
                 
-                <div class="mb-10 ml-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-3 ring-8 ring-gray-50"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SMR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">07/2024 – 09/2025</span>
-                    <p class="text-gray-600">CH Sud Gironde, La Réole (33)</p>
+                <!-- Remplacement 1 -->
+                <div class="mb-10 relative" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <!-- Le point bleu centré sur la ligne -->
+                    <span class="absolute top-1 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-[13px] ring-8 ring-gray-50"></span>
+                    <!-- Le texte décalé à droite (pl-8) -->
+                    <div class="pl-8">
+                        <h4 class="text-xl font-bold text-gray-800">Médecin en SMR</h4>
+                        <span class="block mb-1 text-sm font-semibold text-medical-700">07/2024 – 09/2025</span>
+                        <p class="text-gray-600">CH Sud Gironde, La Réole (33)</p>
+                    </div>
                 </div>
 
-                <div class="mb-10 ml-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-3 ring-8 ring-gray-50"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">11/2021 – 03/2024</span>
-                    <p class="text-gray-600">Les Hauts de Cenon (Korian), Cenon (33)</p>
+                <!-- Remplacement 2 -->
+                <div class="mb-10 relative" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <span class="absolute top-1 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-[13px] ring-8 ring-gray-50"></span>
+                    <div class="pl-8">
+                        <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
+                        <span class="block mb-1 text-sm font-semibold text-medical-700">11/2021 – 03/2024</span>
+                        <p class="text-gray-600">Les Hauts de Cenon (Korian), Cenon (33)</p>
+                    </div>
                 </div>
 
-                <div class="mb-10 ml-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-3 ring-8 ring-gray-50"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">10/2023 – 11/2023</span>
-                    <p class="text-gray-600">SSR Avicenne (Colisée), Libourne (33)</p>
+                <!-- Remplacement 3 -->
+                <div class="mb-10 relative" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <span class="absolute top-1 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-[13px] ring-8 ring-gray-50"></span>
+                    <div class="pl-8">
+                        <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
+                        <span class="block mb-1 text-sm font-semibold text-medical-700">10/2023 – 11/2023</span>
+                        <p class="text-gray-600">SSR Avicenne (Colisée), Libourne (33)</p>
+                    </div>
                 </div>
 
-                <div class="mb-10 ml-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-3 ring-8 ring-gray-50"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">09/2022 – 10/2022</span>
-                    <p class="text-gray-600">SSR Marie Galène, Bordeaux (33)</p>
+                <!-- Remplacement 4 -->
+                <div class="mb-10 relative" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <span class="absolute top-1 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full -left-[13px] ring-8 ring-gray-50"></span>
+                    <div class="pl-8">
+                        <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
+                        <span class="block mb-1 text-sm font-semibold text-medical-700">09/2022 – 10/2022</span>
+                        <p class="text-gray-600">SSR Marie Galène, Bordeaux (33)</p>
+                    </div>
                 </div>
 
             </div>
@@ -168,11 +185,13 @@
             <div class="mt-16" data-aos="fade-up">
                 <h3 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Engagement Extra-Professionnel</h3>
                 <div class="relative border-l-2 border-gray-300 ml-3 md:ml-0">
-                    <div class="ml-8">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-400 rounded-full -left-3 ring-8 ring-gray-50"></span>
-                        <h4 class="text-xl font-bold text-gray-800">Membre Actif AIMGL</h4>
-                        <span class="block mb-2 text-sm font-normal text-gray-600">2018 - 2021</span>
-                        <p class="text-gray-600 text-sm">Association des internes de médecine générale de Limoges.</p>
+                    <div class="relative">
+                        <span class="absolute top-1 flex items-center justify-center w-6 h-6 bg-gray-400 rounded-full -left-[13px] ring-8 ring-gray-50"></span>
+                        <div class="pl-8">
+                            <h4 class="text-xl font-bold text-gray-800">Membre Actif AIMGL</h4>
+                            <span class="block mb-2 text-sm font-normal text-gray-600">2018 - 2021</span>
+                            <p class="text-gray-600 text-sm">Association des internes de médecine générale de Limoges.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -306,10 +325,9 @@
     <!-- Script pour AOS (Animations) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialisation des animations au défilement
         AOS.init({
-            once: true, // L'animation ne se joue qu'une fois
-            offset: 100, // Déclenche l'animation un peu avant que l'élément soit visible
+            once: true,
+            offset: 100,
         });
     </script>
 </body>
