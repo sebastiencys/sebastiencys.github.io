@@ -10,10 +10,10 @@
 
     <!-- Script pour éviter le clignotement clair/sombre au chargement de la page -->
     <script>
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
+        if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.remove('dark');
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.add('dark');
         }
     </script>
 
@@ -95,7 +95,7 @@
             </h2>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-2xl mx-auto">
-                <a href="#experience" class="w-full sm:w-auto text-center bg-medical-500 hover:bg-medical-400 backdrop-blur-md border border-white/20 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg shadow-medical-400/30">
+                <a href="#experience" class="w-full sm:w-auto text-center bg-medical-500 hover:bg-medical-300 backdrop-blur-md border border-white/20 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg shadow-medical-300/30">
                     Expériences cliniques
                 </a>
                 <a href="#portfolio" class="w-full sm:w-auto text-center bg-medical-600 hover:bg-medical-500 backdrop-blur-md border border-white/20 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg shadow-medical-500/30">
@@ -160,28 +160,28 @@
                     <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
                     <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SMR</h4>
                     <!-- Modification: Remplacement dark:text-medical-400 par dark:text-cyan-300 pour lisibilité des dates -->
-                    <span class="block mb-1 text-sm font-semibold text-medical-700 dark:text-cyan-300">07/2024 – 09/2025</span>
+                    <span class="block mb-2 px-3 py-1 text-sm font-semibold text-medical-700 dark:text-cyan-300">07/2024 – 09/2025</span>
                     <p class="text-gray-600 dark:text-gray-400">CH Sud Gironde, La Réole (33)</p>
                 </div>
 
                 <div class="mb-10 relative pl-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-gray-400 dark:bg-gray-600 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
                     <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SSR</h4>
-                    <span class="block mb-2 text-sm font-semibold text-medical-700 dark:text-cyan-300">11/2021 – 03/2024</span>
+                    <span class="block mb-2 px-3 py-1 text-sm font-semibold text-medical-700 dark:text-cyan-300">11/2021 – 03/2024</span>
                     <p class="text-gray-600 dark:text-gray-400">Les Hauts de Cenon (Korian), Cenon (33)</p>
                 </div>
 
                 <div class="mb-10 relative pl-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-gray-400 dark:bg-gray-600 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
                     <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SSR</h4>
-                    <span class="block mb-2 text-sm font-semibold text-medical-700 dark:text-cyan-300">10/2023 – 11/2023</span>
+                    <span class="block mb-2 px-3 py-1 text-sm font-semibold text-medical-700 dark:text-cyan-300">10/2023 – 11/2023</span>
                     <p class="text-gray-600 dark:text-gray-400">SSR Avicenne (Colisée), Libourne (33)</p>
                 </div>
 
                 <div class="mb-10 relative pl-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-gray-400 dark:bg-gray-600 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
                     <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SSR</h4>
-                    <span class="block mb-2 text-sm font-semibold text-medical-700 dark:text-cyan-300">09/2022 – 10/2022</span>
+                    <span class="block mb-2 px-3 py-1 text-sm font-semibold text-medical-700 dark:text-cyan-300">09/2022 – 10/2022</span>
                     <p class="text-gray-600 dark:text-gray-400">SSR Marie Galène, Bordeaux (33)</p>
                 </div>
 
@@ -196,7 +196,7 @@
                     <div class="relative pl-8">
                         <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-gray-400 dark:bg-gray-600 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
                         <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Membre Actif AIMGL</h4>
-                        <span class="block mb-2 text-sm font-semibold text-gray-500 dark:text-cyan-300">2018 - 2021</span>
+                        <span class="block mb-2 px-3 py-1 text-sm font-semibold text-gray-500 dark:text-cyan-300">2018 - 2021</span>
                         <p class="text-gray-600 dark:text-gray-400 text-sm">Association des internes de médecine générale de Limoges.</p>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
             <div class="grid md:grid-cols-2 gap-12">
                 <div data-aos="fade-right" data-aos-duration="800">
                     <!-- Modification: dark:text-cyan-300 pour le titre Médecine -->
-                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900 dark:text-cyan-300 text-center">
+                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900 dark:text-cyan-300">
                         <i class="fa-solid fa-user-doctor mr-3 p-3 bg-medical-100 dark:bg-medical-500/20 rounded-lg text-medical-600 dark:text-cyan-300"></i> Médecine
                     </h4>
                     <div class="space-y-6">
@@ -278,7 +278,7 @@
                 
                 <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                     <!-- Modification: dark:text-cyan-300 pour le titre Data -->
-                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900 dark:text-cyan-300 text-center">
+                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900 dark:text-cyan-300">
                         <i class="fa-solid fa-laptop-medical mr-3 p-3 bg-medical-100 dark:bg-medical-500/20 rounded-lg text-medical-600 dark:text-cyan-300"></i> Data, IA & E-Santé
                     </h4>
                     <div class="space-y-6">
