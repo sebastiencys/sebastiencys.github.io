@@ -8,10 +8,20 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
 
+    <!-- Script pour éviter le clignotement clair/sombre au chargement de la page -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class', // Activation du mode sombre par classe
             theme: {
                 extend: {
                     colors: {
@@ -42,34 +52,42 @@
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased transition-colors duration-300">
 
     <!-- Navbar -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <nav class="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm dark:shadow-gray-800 z-50 transition-all duration-300 border-b border-transparent dark:border-gray-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <a href="#me" class="font-bold text-xl text-medical-900">Dr. S. Chen-Yen-Su</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-medical-500 transition">Profil</a>
-                    <a href="#experience" class="text-gray-600 hover:text-medical-500 transition">Expérience</a>
-                    <a href="#portfolio" class="text-gray-600 hover:text-medical-500 transition">Portfolio</a>
-                    <a href="#education" class="text-gray-600 hover:text-medical-500 transition">Formation</a>
+                <a href="#me" class="font-bold text-xl text-medical-900 dark:text-white">Dr. S. Chen-Yen-Su</a>
+                
+                <div class="flex items-center space-x-6">
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-medical-500 dark:hover:text-medical-400 transition">Profil</a>
+                        <a href="#experience" class="text-gray-600 dark:text-gray-300 hover:text-medical-500 dark:hover:text-medical-400 transition">Expérience</a>
+                        <a href="#portfolio" class="text-gray-600 dark:text-gray-300 hover:text-medical-500 dark:hover:text-medical-400 transition">Portfolio</a>
+                        <a href="#education" class="text-gray-600 dark:text-gray-300 hover:text-medical-500 dark:hover:text-medical-400 transition">Formation</a>
+                    </div>
+                    
+                    <!-- Bouton Dark Mode -->
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-sm p-2.5 transition">
+                        <i id="theme-toggle-dark-icon" class="hidden fa-solid fa-moon text-lg"></i>
+                        <i id="theme-toggle-light-icon" class="hidden fa-solid fa-sun text-lg"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Header / Hero Section (DESIGN SOMBRE) -->
+    <!-- Header / Hero Section (Toujours sombre car c'est le design principal) -->
     <header id="me" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-medical-900 to-medical-800 min-h-[80vh] flex flex-col justify-center overflow-hidden">
         
-        <!-- Effets de lueur en arrière-plan (Style IA/Tech) -->
+        <!-- Effets de lueur en arrière-plan -->
         <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-medical-500 rounded-full mix-blend-screen filter blur-[100px]"></div>
             <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-400 rounded-full mix-blend-screen filter blur-[100px]"></div>
         </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10" data-aos="fade-up" data-aos-duration="1000">
-            <!-- CORRECTION ICI : Remplacement du dégradé par une couleur cyan lumineuse solide -->
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
                 Sébastien <span class="text-cyan-400">Chen-Yen-Su</span>
             </h1>
@@ -77,7 +95,6 @@
                 Médecin Généraliste <span class="mx-2 hidden sm:inline text-medical-500/50">|</span><br class="sm:hidden"> Data & IA en Santé
             </h2>
 
-            <!-- Boutons repensés pour le fond sombre -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-2xl mx-auto">
                 <a href="#experience" class="w-full sm:w-auto text-center bg-medical-500 hover:bg-medical-400 text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg shadow-medical-500/30">
                     Expériences cliniques
@@ -93,95 +110,90 @@
     </header>
 
     <!-- À propos / Compétences -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right" data-aos-duration="800">
-                    <h3 class="text-3xl font-bold mb-6 text-medical-900">La convergence de la médecine et de la technologie</h3>
-                    <p class="text-gray-600 leading-relaxed mb-6">
+                    <h3 class="text-3xl font-bold mb-6 text-medical-900 dark:text-medical-400">La convergence de la médecine et de la technologie</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                         Médecin généraliste de formation, j'ai rapidement développé une passion pour l'impact du numérique sur notre système de santé. Mon objectif est d'allier mon expertise clinique aux technologies de pointe (Intelligence Artificielle, Data Science) pour améliorer les soins, la gestion hospitalière et l'innovation e-santé.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-medical-100 text-medical-700 px-3 py-1 rounded-full text-sm font-medium transition hover:bg-medical-200 cursor-default">Python</span>
-                        <span class="bg-medical-100 text-medical-700 px-3 py-1 rounded-full text-sm font-medium transition hover:bg-medical-200 cursor-default">R</span>
-                        <span class="bg-medical-100 text-medical-700 px-3 py-1 rounded-full text-sm font-medium transition hover:bg-medical-200 cursor-default">SQL (MySQL, Postgres)</span>
-                        <span class="bg-medical-100 text-medical-700 px-3 py-1 rounded-full text-sm font-medium transition hover:bg-medical-200 cursor-default">HTML</span>
+                        <span class="bg-medical-100 dark:bg-medical-900/40 text-medical-700 dark:text-medical-300 px-3 py-1 rounded-full text-sm font-medium transition cursor-default border dark:border-medical-800">Python</span>
+                        <span class="bg-medical-100 dark:bg-medical-900/40 text-medical-700 dark:text-medical-300 px-3 py-1 rounded-full text-sm font-medium transition cursor-default border dark:border-medical-800">R</span>
+                        <span class="bg-medical-100 dark:bg-medical-900/40 text-medical-700 dark:text-medical-300 px-3 py-1 rounded-full text-sm font-medium transition cursor-default border dark:border-medical-800">SQL (MySQL, Postgres)</span>
+                        <span class="bg-medical-100 dark:bg-medical-900/40 text-medical-700 dark:text-medical-300 px-3 py-1 rounded-full text-sm font-medium transition cursor-default border dark:border-medical-800">HTML</span>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium transition hover:bg-gray-200 cursor-default">Codage PMSI</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm font-medium transition cursor-default border dark:border-gray-600">Codage PMSI</span>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                    <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm text-center transform transition duration-300 hover:-translate-y-1 hover:shadow-md">
-                        <i class="fa-solid fa-stethoscope text-4xl text-medical-500 mb-4"></i>
-                        <h4 class="font-semibold text-gray-800">Clinique</h4>
-                        <p class="text-sm text-gray-500 mt-2">Polyvalent, SSR/SMR</p>
+                    <div class="p-6 bg-gray-50 dark:bg-gray-700/50 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm text-center transform transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <i class="fa-solid fa-stethoscope text-4xl text-medical-500 dark:text-medical-400 mb-4"></i>
+                        <h4 class="font-semibold text-gray-800 dark:text-gray-100">Clinique</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Polyvalent, SSR/SMR</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm text-center transform transition duration-300 hover:-translate-y-1 hover:shadow-md">
-                        <i class="fa-solid fa-database text-4xl text-medical-500 mb-4"></i>
-                        <h4 class="font-semibold text-gray-800">Data Science</h4>
-                        <p class="text-sm text-gray-500 mt-2">Extraction, automatisation, IA Générative</p>
+                    <div class="p-6 bg-gray-50 dark:bg-gray-700/50 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm text-center transform transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <i class="fa-solid fa-database text-4xl text-medical-500 dark:text-medical-400 mb-4"></i>
+                        <h4 class="font-semibold text-gray-800 dark:text-gray-100">Data Science</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Extraction, automatisation, IA Générative</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Expériences Médicales (AVEC LA CORRECTION DE LA FRISE) -->
-    <section id="experience" class="py-20 bg-gray-50">
+    <!-- Expériences Médicales -->
+    <section id="experience" class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="mb-12 text-center" data-aos="fade-up">
-                <h3 class="text-3xl font-bold text-gray-900">Expérience Clinique</h3>
-                <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Missions régulières en tant que médecin remplaçant avec une adaptation rapide aux différents logiciels métier en santé, en clinique et dans le secteur public.</p>
+                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">Expérience Clinique</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl mx-auto">Missions régulières en tant que médecin remplaçant avec une adaptation rapide aux différents logiciels métier en santé, en clinique et dans le secteur public.</p>
             </div>
             
-            <!-- Conteneur principal avec la ligne verticale -->
-            <div class="relative border-l-2 border-medical-200 ml-3 md:ml-0">
+            <div class="relative border-l-2 border-medical-200 dark:border-medical-800 ml-3 md:ml-0">
                 
-                <!-- Remplacement 1 -->
                 <div class="mb-10 relative pl-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute top-1 -left-3 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 z-10"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SMR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">07/2024 – 09/2025</span>
-                    <p class="text-gray-600">CH Sud Gironde, La Réole (33)</p>
+                    <!-- Notez l'ajout de dark:ring-gray-900 pour que le cercle ne soit pas blanc autour en mode sombre -->
+                    <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
+                    <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SMR</h4>
+                    <span class="block mb-1 text-sm font-semibold text-medical-700 dark:text-medical-400">07/2024 – 09/2025</span>
+                    <p class="text-gray-600 dark:text-gray-400">CH Sud Gironde, La Réole (33)</p>
                 </div>
 
-                <!-- Remplacement 2 -->
                 <div class="mb-10 relative pl-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute top-1 -left-3 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 z-10"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">11/2021 – 03/2024</span>
-                    <p class="text-gray-600">Les Hauts de Cenon (Korian), Cenon (33)</p>
+                    <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
+                    <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SSR</h4>
+                    <span class="block mb-1 text-sm font-semibold text-medical-700 dark:text-medical-400">11/2021 – 03/2024</span>
+                    <p class="text-gray-600 dark:text-gray-400">Les Hauts de Cenon (Korian), Cenon (33)</p>
                 </div>
 
-                <!-- Remplacement 3 -->
                 <div class="mb-10 relative pl-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute top-1 -left-3 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 z-10"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">10/2023 – 11/2023</span>
-                    <p class="text-gray-600">SSR Avicenne (Colisée), Libourne (33)</p>
+                    <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
+                    <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SSR</h4>
+                    <span class="block mb-1 text-sm font-semibold text-medical-700 dark:text-medical-400">10/2023 – 11/2023</span>
+                    <p class="text-gray-600 dark:text-gray-400">SSR Avicenne (Colisée), Libourne (33)</p>
                 </div>
 
-                <!-- Remplacement 4 -->
                 <div class="mb-10 relative pl-8" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <span class="absolute top-1 -left-3 flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 z-10"></span>
-                    <h4 class="text-xl font-bold text-gray-800">Médecin en SSR</h4>
-                    <span class="block mb-1 text-sm font-semibold text-medical-700">09/2022 – 10/2022</span>
-                    <p class="text-gray-600">SSR Marie Galène, Bordeaux (33)</p>
+                    <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-medical-500 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
+                    <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Médecin en SSR</h4>
+                    <span class="block mb-1 text-sm font-semibold text-medical-700 dark:text-medical-400">09/2022 – 10/2022</span>
+                    <p class="text-gray-600 dark:text-gray-400">SSR Marie Galène, Bordeaux (33)</p>
                 </div>
 
             </div>
 
-            <!-- Section Extra-professionnel -->
             <div class="mt-16" data-aos="fade-up">
-                <h3 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Engagement Extra-Professionnel</h3>
-                <div class="relative border-l-2 border-gray-300 ml-3 md:ml-0">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 border-b dark:border-gray-800 pb-2">Engagement Extra-Professionnel</h3>
+                <div class="relative border-l-2 border-gray-300 dark:border-gray-700 ml-3 md:ml-0">
                     <div class="relative pl-8">
-                        <span class="absolute top-1 -left-3 flex items-center justify-center w-6 h-6 bg-gray-400 rounded-full ring-8 ring-gray-50 z-10"></span>
-                        <h4 class="text-xl font-bold text-gray-800">Membre Actif AIMGL</h4>
-                        <span class="block mb-2 text-sm font-normal text-gray-600">2018 - 2021</span>
-                        <p class="text-gray-600 text-sm">Association des internes de médecine générale de Limoges.</p>
+                        <span class="absolute top-1 -left-[13px] flex items-center justify-center w-6 h-6 bg-gray-400 dark:bg-gray-600 rounded-full ring-8 ring-gray-50 dark:ring-gray-900 z-10 transition-colors"></span>
+                        <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Membre Actif AIMGL</h4>
+                        <span class="block mb-2 text-sm font-normal text-gray-600 dark:text-gray-400">2018 - 2021</span>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Association des internes de médecine générale de Limoges.</p>
                     </div>
                 </div>
             </div>
@@ -190,31 +202,29 @@
     </section>
 
     <!-- Portfolio Tech -->
-    <section id="portfolio" class="py-20 bg-white">
+    <section id="portfolio" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl font-bold mb-12 text-center text-gray-900" data-aos="fade-up">Portfolio Numérique en Santé</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white" data-aos="fade-up">Portfolio Numérique en Santé</h3>
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <!-- Projet 1 -->
-                <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition duration-300 border-t-4 border-medical-500 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-8 shadow-sm hover:shadow-md transition duration-300 border-t-4 border-medical-500 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex justify-between items-start mb-4">
-                        <h4 class="text-xl font-bold text-gray-800">openScanSanteSMR-data</h4>
-                        <span class="text-sm font-bold text-medical-600 bg-medical-100 px-3 py-1 rounded-full">2026</span>
+                        <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">openScanSanteSMR-data</h4>
+                        <span class="text-sm font-bold text-medical-600 dark:text-medical-300 bg-medical-100 dark:bg-medical-900/50 px-3 py-1 rounded-full border dark:border-medical-800">2026</span>
                     </div>
-                    <p class="text-gray-600 mb-6 flex-grow">Projet personnel open source. Extraction et mises à jour automatiques de données consolidées de ScanSanté via des scripts automatisés.</p>
-                    <a href="https://github.com/sebastiencys/openScanSanteSMR-data" target="_blank" class="inline-flex items-center text-medical-700 font-semibold hover:text-medical-900 group">
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 flex-grow">Projet personnel open source. Extraction et mises à jour automatiques de données consolidées de ScanSanté via des scripts automatisés.</p>
+                    <a href="https://github.com/sebastiencys/openScanSanteSMR-data" target="_blank" class="inline-flex items-center text-medical-700 dark:text-medical-400 font-semibold hover:text-medical-900 dark:hover:text-medical-200 group">
                         <i class="fa-brands fa-github mr-2 text-xl group-hover:scale-110 transition-transform"></i> Voir sur GitHub &rarr;
                     </a>
                 </div>
 
-                <!-- Projet 2 -->
-                <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition duration-300 border-t-4 border-medical-500 flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-8 shadow-sm hover:shadow-md transition duration-300 border-t-4 border-medical-500 flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex justify-between items-start mb-4">
-                        <h4 class="text-xl font-bold text-gray-800">Projet CAPIA-DOPIA</h4>
-                        <span class="text-sm font-bold text-medical-600 bg-medical-100 px-3 py-1 rounded-full">2025</span>
+                        <h4 class="text-xl font-bold text-gray-800 dark:text-gray-100">Projet CAPIA-DOPIA</h4>
+                        <span class="text-sm font-bold text-medical-600 dark:text-medical-300 bg-medical-100 dark:bg-medical-900/50 px-3 py-1 rounded-full border dark:border-medical-800">2025</span>
                     </div>
-                    <p class="text-gray-600 mb-6 flex-grow">Réalisé lors d'un datathon organisé par l'Université Bourgogne Europe et l'ESEO Dijon. Développement de nouvelles fonctionnalités et optimisation algorithmique.</p>
-                    <a href="https://datathon.fr" target="_blank" class="inline-flex items-center text-medical-700 font-semibold hover:text-medical-900 group">
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 flex-grow">Réalisé lors d'un datathon organisé par l'Université Bourgogne Europe et l'ESEO Dijon. Développement de nouvelles fonctionnalités et optimisation algorithmique.</p>
+                    <a href="https://datathon.fr" target="_blank" class="inline-flex items-center text-medical-700 dark:text-medical-400 font-semibold hover:text-medical-900 dark:hover:text-medical-200 group">
                         <i class="fa-solid fa-link mr-2 text-xl group-hover:scale-110 transition-transform"></i> datathon.fr &rarr;
                     </a>
                 </div>
@@ -224,56 +234,139 @@
     </section>
 
     <!-- Éducation et Formation -->
-    <section id="education" class="py-20 bg-gray-50">
+    <section id="education" class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl font-bold mb-12 text-center text-gray-900" data-aos="fade-up">Formation & Diplômes</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white" data-aos="fade-up">Formation & Diplômes</h3>
             
             <div class="grid md:grid-cols-2 gap-12">
-                <!-- Médecine -->
                 <div data-aos="fade-right" data-aos-duration="800">
-                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900">
-                        <i class="fa-solid fa-user-doctor mr-3 p-3 bg-medical-100 rounded-lg text-medical-600"></i> Médecine
+                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900 dark:text-medical-400">
+                        <i class="fa-solid fa-user-doctor mr-3 p-3 bg-medical-100 dark:bg-medical-900/40 rounded-lg text-medical-600 dark:text-medical-400"></i> Médecine
                     </h4>
                     <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 transition duration-300">
-                            <span class="text-sm text-medical-700 font-bold mb-1 block">2024</span>
-                            <h5 class="text-lg font-bold text-gray-800">Docteur en Médecine</h5>
-                            <p class="text-sm text-gray-600 font-medium">Université de Limoges</p>
-                            <p class="text-sm text-gray-500 mt-3 italic bg-gray-50 p-3 rounded">Thèse : "Télésurveillance de paramètres biométriques au service du maintien à domicile de la personne âgée poly-pathologique..."</p>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 dark:border-gray-600 dark:hover:border-gray-400 transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2024</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">Docteur en Médecine</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université de Limoges</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-3 italic bg-gray-50 dark:bg-gray-700/50 p-3 rounded">Thèse : "Télésurveillance de paramètres biométriques au service du maintien à domicile de la personne âgée poly-pathologique..."</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 transition duration-300">
-                            <span class="text-sm text-medical-700 font-bold mb-1 block">2022</span>
-                            <h5 class="text-lg font-bold text-gray-800">DES de médecine générale</h5>
-                            <p class="text-sm text-gray-600 font-medium">Université de Limoges</p>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 dark:border-gray-600 dark:hover:border-gray-400 transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2022</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">DES de médecine générale</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université de Limoges</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 transition duration-300">
-                            <span class="text-sm text-medical-700 font-bold mb-1 block">2017</span>
-                            <h5 class="text-lg font-bold text-gray-800">Diplôme de fin de DCEM</h5>
-                            <p class="text-sm text-gray-600 font-medium">Université de Bordeaux</p>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 dark:border-gray-600 dark:hover:border-gray-400 transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2017</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">Diplôme de fin de DCEM</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université de Bordeaux</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 transition duration-300">
-                            <h5 class="text-lg font-bold text-gray-800">PCEM1</h5>
-                            <p class="text-sm text-gray-600 font-medium">Université de La Réunion</p>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:border-gray-600 dark:border-gray-600 dark:hover:border-gray-400 transition duration-300">
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">PCEM1</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université de La Réunion</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Data / Santé Connectée -->
                 <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900">
-                        <i class="fa-solid fa-laptop-medical mr-3 p-3 bg-medical-100 rounded-lg text-medical-600"></i> Data, IA & E-Santé
+                    <h4 class="text-2xl font-bold mb-8 flex items-center text-medical-900 dark:text-medical-400">
+                        <i class="fa-solid fa-laptop-medical mr-3 p-3 bg-medical-100 dark:bg-medical-900/40 rounded-lg text-medical-600 dark:text-medical-400"></i> Data, IA & E-Santé
                     </h4>
                     <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
-                            <span class="text-sm text-medical-700 font-bold mb-1 block">2025 - 2026</span>
-                            <h5 class="text-lg font-bold text-gray-800">DE Science des données en santé publique</h5>
-                            <p class="text-sm text-gray-600 font-medium">EHESP, Rennes</p>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2025 - 2026</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">DE Science des données en santé publique</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">EHESP, Rennes</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
-                            <span class="text-sm text-medical-700 font-bold mb-1 block">2025</span>
-                            <h5 class="text-lg font-bold text-gray-800">DU Santé Connectée</h5>
-                            <p class="text-sm text-gray-600 font-medium">Université Paris Cité</p>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2025</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">DU Santé Connectée</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université Paris Cité</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
-                            <span class="text-sm text-medical-700 font-bold mb-1 block">2024 - 2025</span>
-                            <h5 class="text-lg font-bold text-gray-800">DU Intelligence
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2024 - 2025</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">DU Intelligence Artificielle en Santé (IAS)</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université Bourgogne Europe</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2024 - 2025</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">DU Méthodes de gestion de bases de données</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université de Bordeaux / ISPED</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-medical-500 hover:shadow-md transition duration-300">
+                            <span class="text-sm text-medical-700 dark:text-medical-400 font-bold mb-1 block">2025</span>
+                            <h5 class="text-lg font-bold text-gray-800 dark:text-gray-100">DIU IA Générative en Santé (GEN-IAs)</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">Université Bourgogne Europe</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 text-center border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-2xl font-bold mb-6">Sébastien Chen-Yen-Su</h3>
+            <div class="flex justify-center space-x-8 mb-8">
+                <a href="mailto:[restricted]" class="text-gray-400 hover:text-white transform hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-envelope text-3xl"></i>
+                </a>
+                <a href="https://github.com/sebastiencys" target="_blank" class="text-gray-400 hover:text-white transform hover:scale-110 transition duration-300">
+                    <i class="fa-brands fa-github text-3xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2026 Sébastien Chen-Yen-Su. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Script pour AOS (Animations) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 100,
+        });
+
+        // ==========================================
+        // SCRIPT POUR LE DARK MODE TOGGLE
+        // ==========================================
+        var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Change l'icône en fonction du thème actuel au chargement
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        var themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function() {
+            // Bascule les icônes
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // Bascule le thème
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
